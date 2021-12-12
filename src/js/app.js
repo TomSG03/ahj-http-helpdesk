@@ -1,17 +1,9 @@
-import Trello from './trello';
+import HelpDesk from './helpdesk';
 
-const topic = ['Нужно сделать', 'Делаю', 'Результат'];
+const domElmt = document.querySelector('.help-desk');
 
-const example = [
-  ['Встать пораньше', 'Забить пару гвоздей', 'Забить на все', 'Не опоздать на работу', 'Делать как надо'],
-  ['Бегу', 'Пью кофе', 'Еду', 'Делаю что могу'],
-  ['Опять опоздал', 'Забил'],
-];
+const servetPath = 'http://localhost:7070';
+const taskName = '/ahj-hdesk';
 
-const divTrello = document.querySelector('.trello');
-
-const jsTrello = new Trello(divTrello, topic);
-
-jsTrello.init(example);
-
-jsTrello.display();
+const hDesk = new HelpDesk(domElmt, `${servetPath}${taskName}`);
+hDesk.begin();
