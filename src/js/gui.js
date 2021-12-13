@@ -1,67 +1,76 @@
+/* eslint-disable guard-for-in */
 export default class GUI {
   constructor(host) {
     this.host = host;
-    this.closeModal = this.closeModal.bind(this);
+    this.closeWinModal = this.closeWinModal.bind(this);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  modalAsk(head = 'Заголовок', ask = 'Текст вопроса', callback) {
-    this.modal = document.createElement('div');
-    this.modal.className = 'windowAsk-wrapper';
-
+  winModalDialog(obj = {}, callback) {
+    this.winModal = document.createElement('div');
+    this.winModal.className = 'windowAsk-wrapper';
     const divWindow = document.createElement('div');
     divWindow.className = 'window-ask';
 
-    const divHead = document.createElement('div');
-    divHead.className = 'head-ask';
-    divHead.textContent = head;
+    let winHTML = '';
+    for (const key in obj) {
+      switch (key) {
+        case 'head':
+          winHTML += `<div class="head-ask">${obj[key]}</div>`;
+          break;
+        case 'input':
+          winHTML += `
+            <div class="input-ask-block">
+              <div class="head-input-ask">${obj[key].head}</div>
+              <input class="input-ask" type="text" value="${obj[key].value}">
+            </div>
+          `;
+          break;
+        case 'textArea':
+          winHTML += `
+            <div class="input-ask-block">
+              <div class="head-textarea-ask">${obj[key].head}</div>
+              <textarea class="textarea-ask">${obj[key].value}</textarea>
+            </div>
+          `;
+          break;
+        case 'text':
+          winHTML += `<div class="body-ask">${obj[key]}</div>`;
+          break;
 
-    const divBody = document.createElement('div');
-    divBody.style.textAlign = 'left';
-    divBody.style.margin = '10px 20px';
-    divBody.textContent = ask;
+        default:
+          break;
+      }
+    }
+
+    divWindow.innerHTML = winHTML;
 
     const divBtn = document.createElement('div');
-    divBtn.style.textAlign = 'right';
-    divBtn.style.margin = '20px';
+    divBtn.className = 'btn-ask';
 
     const btnCancel = document.createElement('button');
     btnCancel.className = 'btnCancel';
-    btnCancel.style.padding = '10px 15px';
-    btnCancel.style.marginRight = '20px';
-    btnCancel.style.backgroundColor = '#fff';
-    btnCancel.style.border = 'solid 1px gray';
-    btnCancel.style.borderRadius = '10px';
-    btnCancel.style.fontSize = '1.1rem';
     btnCancel.textContent = 'Отмена';
 
     const btnOk = document.createElement('button');
     btnOk.className = 'btnOk';
-    btnOk.style.padding = '10px 20px';
-    btnOk.style.backgroundColor = '#fff';
-    btnOk.style.border = 'solid 1px gray';
-    btnOk.style.borderRadius = '10px';
-    btnOk.style.fontSize = '1.1rem';
     btnOk.textContent = 'Ok';
 
     divBtn.appendChild(btnCancel);
     divBtn.appendChild(btnOk);
 
-    this.modal.appendChild(divWindow);
-    divWindow.appendChild(divHead);
-    divWindow.appendChild(divBody);
+    this.winModal.appendChild(divWindow);
     divWindow.appendChild(divBtn);
 
-    document.body.appendChild(this.modal);
+    document.body.appendChild(this.winModal);
 
-    this.cancel = this.modal.querySelector('.btnCancel');
-    this.cancel.addEventListener('click', this.closeModal);
-    this.ok = this.modal.querySelector('.btnOk');
+    this.cancel = this.winModal.querySelector('.btnCancel');
+    this.cancel.addEventListener('click', this.closeWinModal);
+    this.ok = this.winModal.querySelector('.btnOk');
     this.ok.addEventListener('click', callback);
   }
 
-  closeModal() {
-    this.modal.remove();
+  closeWinModal() {
+    this.winModal.remove();
   }
 
   // ---------------------------- add parts ---------------------------------
@@ -107,5 +116,13 @@ export default class GUI {
     e.closest('.task').remove();
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  editTicket(e, name) {
+    e.closest('.task').querySelector('.name').textContent = name;
+  }
 
+  resetDesk() {
+    const arr = this.host.querySelectorAll('.task');
+    arr.forEach((e) => e.remove());
+  }
 }

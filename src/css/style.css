@@ -27,7 +27,7 @@ body {
   text-align: right;
 }
 
-.add-button {
+.add-task {
   padding: 10px;
   border-radius: 10px;
   border: solid 1px gray;
@@ -82,4 +82,5 @@ body {
 
 .task-description {
   margin-left: 55px;
+  overflow-wrap: break-word;
 }

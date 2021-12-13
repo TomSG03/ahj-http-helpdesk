@@ -1,3 +1,8 @@
+:root {
+  --win-width: 500px;
+}
+
+
 .windowAsk-wrapper {
   left: 0;
   top: 0;
@@ -10,22 +15,42 @@
 
 .window-ask {
   position: fixed;
-  width: 400px;
+  width: var(--win-width);
   border: solid 1px gray;
   border-radius: 10px;
-  left: calc( 50% - 200px );
-  top: 80px;
+  left: calc( 50% - 250px );
+  top: 100px;
   background-color: #fff;
 }
 
 .head-ask {
   text-align: center;
-  margin: 10px 20px;  
+  margin: 20px 20px;  
 }
 
-.body {
+.body-ask {
   text-align: left;
-  margin: 10px 20px;
+  margin: 20px 20px;
+}
+
+.textarea-ask {
+  padding: 5px;  
+  font-size: 1.2rem;
+  width: 100%;
+  resize: vertical;
+  max-height: 200px;
+  min-height: 80px;
+  font-family: "PT Sans", Calibri, Helvetica, Arial, sans-serif;
+}
+.input-ask-block {
+  margin: 20px;
+}
+
+.input-ask {
+  padding: 5px;
+  font-size: 1.2rem;
+  width: 100%;
+  font-family: "PT Sans", Calibri, Helvetica, Arial, sans-serif;
 }
 
 .btn-ask {
