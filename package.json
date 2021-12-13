@@ -22,7 +22,7 @@
   },
   "author": "Tomilov",
   "license": "MIT",
-  "homepage": "https://github.com/TomSG03/ahj-forms-popovers",
+  "homepage": "https://github.com/TomSG03/ahj-http-helpdesk",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
