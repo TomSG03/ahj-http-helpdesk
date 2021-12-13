@@ -21,7 +21,7 @@ export default class GUI {
           winHTML += `
             <div class="input-ask-block">
               <div class="head-input-ask">${obj[key].head}</div>
-              <input class="input-ask" type="text" value="${obj[key].value}">
+              <input class="input-ask" type="text" value="${obj[key].value}" required>
             </div>
           `;
           break;
@@ -29,7 +29,7 @@ export default class GUI {
           winHTML += `
             <div class="input-ask-block">
               <div class="head-textarea-ask">${obj[key].head}</div>
-              <textarea class="textarea-ask">${obj[key].value}</textarea>
+              <textarea class="input-ask textarea-ask" required>${obj[key].value}</textarea>
             </div>
           `;
           break;
@@ -65,8 +65,24 @@ export default class GUI {
 
     this.cancel = this.winModal.querySelector('.btnCancel');
     this.cancel.addEventListener('click', this.closeWinModal);
+
     this.ok = this.winModal.querySelector('.btnOk');
-    this.ok.addEventListener('click', callback);
+    this.ok.addEventListener('click', this.checkValidity.bind(this, callback));
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  checkValidity(callback, e) {
+    const arr = e.target.closest('.window-ask').querySelectorAll('.input-ask');
+    for (let i = 0; i < arr.length; i += 1) {
+      if (!arr[i].checkValidity()) {
+        arr[i].style.border = 'ridge 4px red';
+        setTimeout(() => {
+          arr[i].style.border = '';
+        }, 1000);
+        return;
+      }
+    }
+    callback();
   }
 
   closeWinModal() {
