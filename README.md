@@ -6,4 +6,4 @@
 
 [![CircleCI](https://circleci.com/gh/TomSG03/ahj-http-helpdesk/tree/main.svg?style=svg)](https://circleci.com/gh/TomSG03/ahj-http-helpdesk/tree/main)
 
-## [Gh-Pages](https://github.com/TomSG03/ahj-http-helpdesk/deployments)
+## [Gh-Pages](https://tomsg03.github.io/ahj-http-helpdesk/)
