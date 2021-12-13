@@ -43,16 +43,14 @@
   font-size: 1.2rem;
   width: 100%;
   font-family: "PT Sans", Calibri, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 .textarea-ask {
-  padding: 5px;  
-  font-size: 1.2rem;
-  width: 100%;
   resize: vertical;
   max-height: 200px;
   min-height: 80px;
-  font-family: "PT Sans", Calibri, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 .btn-ask {

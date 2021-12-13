@@ -75,9 +75,11 @@ export default class GUI {
     const arr = e.target.closest('.window-ask').querySelectorAll('.input-ask');
     for (let i = 0; i < arr.length; i += 1) {
       if (!arr[i].checkValidity()) {
-        arr[i].style.border = 'ridge 4px red';
+        arr[i].style.outline = 'solid red';
+        arr[i].style.borderColor = 'red';
         setTimeout(() => {
-          arr[i].style.border = '';
+          arr[i].style.outline = '';
+          arr[i].style.borderColor = '';
         }, 1000);
         return;
       }
