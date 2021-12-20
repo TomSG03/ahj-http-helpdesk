@@ -3,6 +3,7 @@
 ## [Домашнее задание к лекции «http»](https://github.com/TomSG03/ahj-homeworks/tree/simplification/http)
 
 - [x] http
+- [x] [Http - server](https://github.com/TomSG03/ahj-http-helpdesk-backend/blob/main/README.md)
 
 [![CircleCI](https://circleci.com/gh/TomSG03/ahj-http-helpdesk/tree/main.svg?style=svg)](https://circleci.com/gh/TomSG03/ahj-http-helpdesk/tree/main)
 
